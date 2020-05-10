@@ -1,0 +1,69 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionName versions.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = versions.sourceCompat
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.sourceCompat
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.stdlib7
+    implementation deps.support.appCompat
+    implementation deps.support.constraintlayout
+    implementation deps.android.coreKtx
+    implementation deps.android.lifecycleExt
+
+    implementation deps.support.androidxLegacySupport
+    implementation deps.android.fragmentKtx
+    implementation deps.android.lifecycleExt
+
+    implementation deps.reactivex.rxJava
+    implementation deps.reactivex.rxAndroid
+
+    implementation deps.google.dagger
+    kapt deps.google.daggerProcessor
+    implementation deps.google.gson
+
+    implementation deps.square.retrofit
+    implementation deps.square.okhttp
+    implementation deps.square.okhttpLoggingInterceptor
+    implementation deps.square.gsonConverter
+    implementation deps.square.retrofitRxAdapter
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.mockitoKotlin
+    testImplementation deps.test.mockWebServer
+    testImplementation deps.test.livedataTesting
+    testImplementation deps.test.roomTesting
+    testImplementation deps.test.mockitoInline
+    testImplementation project(':testshared')
+}

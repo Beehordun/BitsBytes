@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.sourceCompat
+    }
+
+    kotlinOptions {
+        jvmTarget = versions.sourceCompat
+    }
+
+    packagingOptions {
+        exclude 'META-INF/test_shared_debug.kotlin_module'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':core')
+
+    implementation deps.kotlin.stdlib7
+    implementation deps.square.retrofit
+    implementation deps.square.retrofitRxAdapter
+    implementation deps.google.gson
+    implementation deps.square.gsonConverter
+}

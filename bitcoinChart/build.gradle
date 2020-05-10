@@ -1,0 +1,64 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+    implementation project(':core')
+
+    implementation deps.kotlin.stdlib7
+
+    implementation deps.support.appCompat
+    implementation deps.support.constraintlayout
+
+    implementation deps.android.coreKtx
+    implementation deps.android.lifecycleExt
+    implementation deps.android.roomRuntime
+    kapt deps.android.roomCompiler
+    implementation deps.android.roomRx
+
+
+    implementation deps.square.retrofit
+    implementation deps.square.retrofitRxAdapter
+    implementation deps.square.gsonConverter
+
+    implementation deps.google.gson
+    implementation deps.google.dagger
+    kapt deps.google.daggerProcessor
+
+    implementation deps.reactivex.rxJava
+    implementation deps.reactivex.rxAndroid
+
+    implementation deps.additional.mpAndroidChart
+
+    testImplementation project(':testshared')
+    testImplementation deps.test.junit
+    testImplementation deps.test.mockitoKotlin
+    testImplementation deps.test.mockWebServer
+    testImplementation deps.test.livedataTesting
+    testImplementation deps.test.roomTesting
+    testImplementation deps.test.mockitoInline
+
+    androidTestImplementation deps.test.junit
+    androidTestImplementation deps.test.mockitoKotlin
+    androidTestImplementation deps.test.atslRunner
+    androidTestImplementation deps.test.atslRules
+    androidTestImplementation deps.test.roomTesting
+    androidTestImplementation deps.test.livedataTesting
+    androidTestImplementation deps.test.testRunner
+}
