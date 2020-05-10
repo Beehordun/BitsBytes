@@ -1,5 +1,5 @@
 package com.biodun.core.utils
 
 object DurationUtil {
-    val default = "7days"
+    const val default = "7days"
 }

@@ -10,6 +10,4 @@ interface CoreSubComponent {
     fun scheduler(): SchedulerInterface
     fun retrofit(): Retrofit
     val application: Application
-
-
 }

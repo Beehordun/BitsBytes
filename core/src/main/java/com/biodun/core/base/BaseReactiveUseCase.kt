@@ -9,5 +9,4 @@ interface BaseReactiveUseCase {
         @NonNull
         fun getSingle(params: Params): Single<Result>
     }
-
 }

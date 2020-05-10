@@ -1,8 +1,8 @@
 package com.biodun.bitcoinChart.network
 
+import com.biodun.bitcoinChart.DummyData
 import com.biodun.bitcoinChart.data.remote.BitcoinChartService
-import com.biodun.core.utils.DurationUtil
-import com.biodun.core.utils.QueryMapper
+import com.biodun.core.model.ErrorResponse
 import com.example.testshared.TestDependencyProvider
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
@@ -18,7 +18,7 @@ class BitcoinChartServiceTest {
 
     private lateinit var service: BitcoinChartService
     private lateinit var mockWebServer: MockWebServer
-    private val queryMap = QueryMapper.getQueryMap(DurationUtil.default)
+    private val queryMap = DummyData.queryMap
 
     @Before
     fun setup() {
@@ -51,8 +51,27 @@ class BitcoinChartServiceTest {
             }
     }
 
+        @Test
+        fun getBitcoinData_WithDefaultDuration_returnsError() {
+            queueResponse {
+                setResponseCode(400)
+                setBody(TestDependencyProvider.getResponseFromJson("bitcoin-error-response"))
+            }
+
+            service
+                .getBitcoinData(queryMap)
+                .test()
+                .run {
+                    val httpException = errors()[0] as HttpException
+                    val errorBody = httpException.response().errorBody()?.string()
+                    val errorDataResponse: ErrorResponse =
+                        Gson().fromJson(errorBody, ErrorResponse::class.java)
+                    Assert.assertEquals(errorDataResponse.status, "not-found")
+                    Assert.assertNull(errorDataResponse.data)
+                }
+        }
+
     private fun queueResponse(block: MockResponse.() -> Unit) {
         mockWebServer.enqueue(MockResponse().apply(block))
     }
-
 }

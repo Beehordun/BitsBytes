@@ -1,6 +1,5 @@
 package com.biodun.bitcoinChart.presentation
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.biodun.bitcoinChart.data.model.BitcoinData
 import com.biodun.core.base.BaseReactiveUseCase
@@ -23,17 +22,14 @@ class BitcoinChartViewModel @Inject constructor(
     fun getBitcoinData(duration: String) {
         addDisposable(
             bitcoinChartUseCase.getSingle(duration)
-                .doOnSubscribe { bitcoinChartLiveData.setLoading()
-                println("Debug:   Called")}
+                .doOnSubscribe { bitcoinChartLiveData.setLoading() }
                 .subscribeOn(appScheduler.io())
                 .observeOn(appScheduler.mainThread())
                 .subscribe(
                     {
-                        println("Debug: Sizeeee: ${it.values.size}")
                         bitcoinChartLiveData.setSuccess(it)
                     },
                     {
-                        println("Debug: Error!! --> ${it.message}")
                         bitcoinChartLiveData.setError(it as Exception)
                     })
         )

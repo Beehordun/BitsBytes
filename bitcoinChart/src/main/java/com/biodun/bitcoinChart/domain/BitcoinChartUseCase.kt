@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class BitcoinChartUseCase @Inject constructor(
     private val bitcoinChartRepository: BitcoinChartRepository
-) : BaseReactiveUseCase.GetUseCase<String, BitcoinData>{
+) : BaseReactiveUseCase.GetUseCase<String, BitcoinData> {
 
     override fun getSingle(params: String): Single<BitcoinData> =
         bitcoinChartRepository.getBitcoinData(params)

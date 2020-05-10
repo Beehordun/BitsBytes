@@ -2,7 +2,6 @@ package com.biodun.bitcoinChart.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.biodun.bitcoinChart.data.local.roomDb.BitcoinRoomDb
 import com.biodun.bitcoinChart.data.local.ReactiveDb
 import com.biodun.bitcoinChart.data.local.roomDb.RoomReactiveDb
@@ -14,8 +13,6 @@ import com.biodun.bitcoinChart.data.repository.BitcoinChartRepository
 import com.biodun.bitcoinChart.data.repository.BitcoinChartRepositoryImpl
 import com.biodun.bitcoinChart.domain.BitcoinChartUseCase
 import com.biodun.core.base.BaseReactiveUseCase
-import com.biodun.core.scheduler.AppScheduler
-import com.biodun.core.scheduler.SchedulerInterface
 import com.biodun.core.utils.DATABASE_NAME
 import dagger.Binds
 import dagger.Module
@@ -59,6 +56,5 @@ interface BitcoinChartModule {
         @Singleton
         fun provideBitcoinChartService(retrofit: Retrofit): BitcoinChartService =
             retrofit.create(BitcoinChartService::class.java)
-
     }
 }

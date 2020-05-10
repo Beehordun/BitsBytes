@@ -11,10 +11,6 @@ class BlockChainMarketApp : Application() {
         DaggerCoreComponent.factory().create(this)
     }
 
-   /* private val appComponent: AppComponent by lazy {
-        DaggerAppComponent.factory().create(this, coreComponent)
-    }*/
-
     companion object {
         @JvmStatic
         fun coreComponent(context: Context) =

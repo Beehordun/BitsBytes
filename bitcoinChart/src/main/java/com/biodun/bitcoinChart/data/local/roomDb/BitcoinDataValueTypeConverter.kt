@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 import java.util.Collections
 
-
 class BitcoinDataValueTypeConverter {
 
     private val gson = Gson()
@@ -22,7 +21,6 @@ class BitcoinDataValueTypeConverter {
         }
 
         val listType: Type = object : TypeToken<List<BitcoinDataValue>>() {}.type
-
         return gson.fromJson(data, listType)
     }
 }

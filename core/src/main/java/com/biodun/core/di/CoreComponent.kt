@@ -11,7 +11,6 @@ interface CoreComponent {
 
     val coreSubComponent: CoreSubComponent
 
-
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance application: Application): CoreComponent

@@ -6,14 +6,13 @@ import androidx.room.Query
 import com.biodun.bitcoinChart.data.model.BitcoinData
 import com.biodun.core.utils.BITCOIN_TABLE
 import io.reactivex.Flowable
-import io.reactivex.Maybe
 
 @Dao
 interface BitcoinDao {
 
     @Insert
-    fun insertAll(bitcoinData: List<BitcoinData>)
+    fun insertAll(bitcoinData: BitcoinData)
 
     @Query("SELECT * from $BITCOIN_TABLE")
-    fun getAll(): Flowable<List<BitcoinData>>
+    fun getAll(): Flowable<BitcoinData>
 }

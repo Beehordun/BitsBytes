@@ -11,8 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-const val baseUrl = "https://api.blockchain.info"
-
 @Module
 interface CoreModule {
 
@@ -27,6 +25,7 @@ interface CoreModule {
         @Singleton
         @Provides
         fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
+            val baseUrl = "https://api.blockchain.info"
             return Retrofit.Builder().baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
