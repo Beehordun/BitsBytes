@@ -11,5 +11,10 @@ class BitcoinChartUseCase @Inject constructor(
 ) : BaseReactiveUseCase.GetUseCase<String, BitcoinData> {
 
     override fun getSingle(params: String): Single<BitcoinData> =
-        bitcoinChartRepository.getBitcoinData(params)
+        getFromDbWhenRemoteIsEmpty(params)
+
+    private fun getFromDbWhenRemoteIsEmpty(params: String): Single<BitcoinData> =
+        bitcoinChartRepository.getBitcoinData(params).onErrorResumeNext {
+            bitcoinChartRepository.getLocalBitcoinData().firstOrError()
+        }
 }
