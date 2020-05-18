@@ -14,3 +14,6 @@ App uses the Room Database
 
 ## Static Analysis
 App uses ktlint and detekt 
+
+## Tests
+Unit tested the data, domain and presentation layers
