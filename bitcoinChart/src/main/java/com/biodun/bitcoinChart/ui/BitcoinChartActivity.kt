@@ -11,7 +11,6 @@ import com.biodun.bitcoinChart.R
 import com.biodun.bitcoinChart.data.model.BitcoinData
 import com.biodun.bitcoinChart.di.inject
 import com.biodun.bitcoinChart.presentation.BitcoinChartViewModel
-import com.biodun.bitcoinChart.presentation.BitcoinChartViewModelFactory
 import com.biodun.core.extentions.gone
 import com.biodun.core.extentions.visible
 import com.biodun.core.stateManagement.ResultState
@@ -36,10 +35,10 @@ const val ANIMATION_TIME_MILLIS = 2000
 class BitcoinChartActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var bitcoinChartViewModelFactory: BitcoinChartViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val bitcoinChartViewModel: BitcoinChartViewModel by lazy {
-        ViewModelProvider(this, bitcoinChartViewModelFactory)
+        ViewModelProvider(this, viewModelFactory)
             .get(BitcoinChartViewModel::class.java)
     }
 

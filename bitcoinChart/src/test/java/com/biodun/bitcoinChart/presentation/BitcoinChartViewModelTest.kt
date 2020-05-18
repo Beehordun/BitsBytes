@@ -11,8 +11,6 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.TestScheduler
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -31,12 +29,10 @@ class BitcoinChartViewModelTest {
     @Rule
     @JvmField
     val instantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
-    private val testScheduler = TestScheduler()
 
     @Before
     fun setUp() {
         bitcoinChartViewModel = BitcoinChartViewModel(bitcoinChartUseCase, LocalTestScheduler())
-        RxJavaPlugins.setComputationSchedulerHandler { testScheduler }
     }
 
     @Test

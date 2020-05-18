@@ -9,7 +9,7 @@ import java.util.Collections
 
 class BitcoinDataValueTypeConverter {
 
-    private val gson = Gson()
+    private val gson = GsonWrapper.getGson()
 
     @TypeConverter
     fun fromBitcoinDataValueToString(data: List<BitcoinDataValue>): String = gson.toJson(data)
@@ -22,5 +22,11 @@ class BitcoinDataValueTypeConverter {
 
         val listType: Type = object : TypeToken<List<BitcoinDataValue>>() {}.type
         return gson.fromJson(data, listType)
+    }
+
+    companion object {
+        object GsonWrapper {
+            fun getGson() = Gson()
+        }
     }
 }

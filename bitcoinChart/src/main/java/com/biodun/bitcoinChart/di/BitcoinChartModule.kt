@@ -1,6 +1,8 @@
 package com.biodun.bitcoinChart.di
 
 import android.app.Application
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import com.biodun.bitcoinChart.data.local.roomDb.BitcoinRoomDb
 import com.biodun.bitcoinChart.data.local.ReactiveDb
@@ -12,11 +14,14 @@ import com.biodun.bitcoinChart.data.remote.retrofitRemoteImpl.BitcoinChartRemote
 import com.biodun.bitcoinChart.data.repository.BitcoinChartRepository
 import com.biodun.bitcoinChart.data.repository.BitcoinChartRepositoryImpl
 import com.biodun.bitcoinChart.domain.BitcoinChartUseCase
+import com.biodun.bitcoinChart.presentation.BitcoinChartViewModel
 import com.biodun.core.base.BaseReactiveUseCase
+import com.biodun.core.di.ViewModelKey
 import com.biodun.core.utils.DATABASE_NAME
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.multibindings.IntoMap
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -24,22 +29,30 @@ import javax.inject.Singleton
 interface BitcoinChartModule {
 
     @Binds
-    fun provideRoomReactiveDb(roomReactiveDb: RoomReactiveDb): ReactiveDb<BitcoinData>
+    fun bindRoomReactiveDb(roomReactiveDb: RoomReactiveDb): ReactiveDb<BitcoinData>
 
     @Binds
-    fun provideBitcoinChartRemoteDataSource(
+    fun bindBitcoinChartRemoteDataSource(
         bitcoinChartRemoteDataSourceImpl: BitcoinChartRemoteDataSourceImpl
     ): BitcoinChartRemoteDataSource
 
     @Binds
-    fun provideBitcoinChartRepository(
+    fun bindBitcoinChartRepository(
         bitcoinChartRepositoryImpl: BitcoinChartRepositoryImpl
     ): BitcoinChartRepository
 
     @Binds
-    fun provideBitcoinChartUseCase(
+    fun bindBitcoinChartUseCase(
         bitcoinChartUseCase: BitcoinChartUseCase
     ): BaseReactiveUseCase.GetUseCase<String, BitcoinData>
+
+    @Binds
+    fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BitcoinChartViewModel::class)
+    fun bindBitcoinViewModel(bitcoinChartViewModel: BitcoinChartViewModel): ViewModel
 
     companion object {
 
