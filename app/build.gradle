@@ -21,32 +21,50 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    dynamicFeatures = [":bitcoinChart"]
 }
 
 dependencies {
-    api 'androidx.appcompat:appcompat:1.1.0'
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':core')
 
-    implementation deps.support.appCompat
-    implementation deps.support.constraintlayout
-    implementation deps.support.androidxLegacySupport
-    implementation deps.support.designSupport
-
     implementation deps.kotlin.stdlib7
 
-    implementation deps.android.fragmentKtx
-    implementation deps.square.retrofit
-    implementation deps.square.okhttp
-    implementation deps.square.okhttpLoggingInterceptor
-    implementation deps.square.gsonConverter
-    implementation deps.square.retrofitRxAdapter
+    implementation deps.support.appCompat
+    implementation deps.support.constraintlayout
 
+    implementation deps.android.coreKtx
+    implementation deps.android.lifecycleExt
+    implementation deps.android.roomRuntime
+    kapt deps.android.roomCompiler
+    implementation deps.android.roomRx
+
+
+    implementation deps.square.retrofit
+    implementation deps.square.retrofitRxAdapter
+    implementation deps.square.gsonConverter
+
+    implementation deps.google.gson
     implementation deps.google.dagger
     kapt deps.google.daggerProcessor
 
     implementation deps.reactivex.rxJava
+    implementation deps.reactivex.rxAndroid
+
+    implementation deps.additional.mpAndroidChart
+
+    testImplementation project(':testshared')
+    testImplementation deps.test.junit
+    testImplementation deps.test.mockitoKotlin
+    testImplementation deps.test.mockWebServer
+    testImplementation deps.test.livedataTesting
+    testImplementation deps.test.roomTesting
+    testImplementation deps.test.mockitoInline
+
+    androidTestImplementation deps.test.junit
+    androidTestImplementation deps.test.mockitoKotlin
+    androidTestImplementation deps.test.atslRunner
+    androidTestImplementation deps.test.atslRules
+    androidTestImplementation deps.test.roomTesting
+    androidTestImplementation deps.test.livedataTesting
+    androidTestImplementation deps.test.testRunner
 }

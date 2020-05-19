@@ -13,7 +13,7 @@ class BlockChainMarketApp : Application() {
 
     companion object {
         @JvmStatic
-        fun coreComponent(context: Context) =
+        fun coreSubComponent(context: Context) =
             (context.applicationContext as BlockChainMarketApp).coreComponent.coreSubComponent
     }
 }
