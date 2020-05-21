@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/sevenDaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_rounded_start_normal"
+        android:padding="@dimen/text_padding"
+        android:text="@string/sevenDays"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/thirtyDaysTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="7days" />
+
+    <TextView
+        android:id="@+id/thirtyDaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_normal"
+        android:padding="@dimen/text_padding"
+        android:text="@string/thirtyDays"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/sixtyDaysTextView"
+        app:layout_constraintStart_toEndOf="@id/sevenDaysTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="30days" />
+
+    <TextView
+        android:id="@+id/sixtyDaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_normal"
+        android:padding="@dimen/text_padding"
+        android:text="@string/sixtyDays"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/oneHundredAndEightyDaysTextView"
+        app:layout_constraintStart_toEndOf="@id/thirtyDaysTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="60days" />
+
+    <TextView
+        android:id="@+id/oneHundredAndEightyDaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_rounded_end_normal"
+        android:padding="@dimen/text_padding"
+        android:text="@string/oneHundredAndEightyDays"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/sixtyDaysTextView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="180days" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

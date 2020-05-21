@@ -52,6 +52,9 @@ class BitcoinChartActivity : AppCompatActivity() {
     private fun configureView() {
         bitcoinChartViewModel.getBitcoinData(DurationUtil.default)
         observeBitcoinChartLiveData()
+        durationView.setOnDurationSelectedListener {
+            bitcoinChartViewModel.getBitcoinData(it)
+        }
     }
 
     private fun observeBitcoinChartLiveData() {
