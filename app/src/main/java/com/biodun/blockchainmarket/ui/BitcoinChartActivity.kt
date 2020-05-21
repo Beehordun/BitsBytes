@@ -51,7 +51,6 @@ class BitcoinChartActivity : AppCompatActivity() {
 
     private fun configureView() {
         bitcoinChartViewModel.getBitcoinData(DurationUtil.default)
-        handleDurationClicks()
         observeBitcoinChartLiveData()
     }
 
@@ -122,10 +121,6 @@ class BitcoinChartActivity : AppCompatActivity() {
         }
 
         bitcoinChartGraph.invalidate()
-    }
-
-    private fun handleDurationClicks() {
-
     }
 
     private fun handleError(error: Exception) {
