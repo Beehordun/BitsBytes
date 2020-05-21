@@ -1,7 +1,7 @@
 package com.biodun.bitcoinChart.network
 
 import com.biodun.bitcoinChart.DummyData
-import com.biodun.bitcoinChart.data.remote.BitcoinChartService
+import com.biodun.blockchainmarket.data.remote.retrofitRemoteImpl.BitcoinChartService
 import com.biodun.core.model.ErrorResponse
 import com.example.testshared.TestDependencyProvider
 import com.google.gson.Gson

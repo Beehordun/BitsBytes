@@ -1,7 +1,7 @@
 package com.biodun.bitcoinChart
 
-import com.biodun.bitcoinChart.data.model.BitcoinData
-import com.biodun.bitcoinChart.data.model.BitcoinDataValue
+import com.biodun.blockchainmarket.data.model.BitcoinData
+import com.biodun.blockchainmarket.data.model.BitcoinDataValue
 import com.biodun.core.utils.DurationUtil
 import com.biodun.core.utils.QueryMapper
 

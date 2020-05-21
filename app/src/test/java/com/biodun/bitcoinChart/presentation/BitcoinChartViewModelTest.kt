@@ -2,7 +2,8 @@ package com.biodun.bitcoinChart.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.biodun.bitcoinChart.DummyData
-import com.biodun.bitcoinChart.data.model.BitcoinData
+import com.biodun.blockchainmarket.data.model.BitcoinData
+import com.biodun.blockchainmarket.presentation.BitcoinChartViewModel
 import com.biodun.core.base.BaseReactiveUseCase
 import com.biodun.core.stateManagement.Result
 import com.biodun.core.stateManagement.ResultState

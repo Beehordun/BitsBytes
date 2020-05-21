@@ -1,19 +1,17 @@
 package com.biodun.bitcoinChart.data
 
 import com.biodun.bitcoinChart.DummyData
-import com.biodun.bitcoinChart.data.local.ReactiveDb
-import com.biodun.bitcoinChart.data.model.BitcoinData
-import com.biodun.bitcoinChart.data.remote.retrofitRemoteImpl.BitcoinChartRemoteDataSource
-import com.biodun.bitcoinChart.data.repository.BitcoinChartRepository
-import com.biodun.bitcoinChart.data.repository.BitcoinChartRepositoryImpl
+import com.biodun.blockchainmarket.data.local.ReactiveDb
+import com.biodun.blockchainmarket.data.model.BitcoinData
+import com.biodun.blockchainmarket.data.remote.BitcoinChartRemoteDataSource
+import com.biodun.blockchainmarket.data.repository.BitcoinChartRepository
+import com.biodun.blockchainmarket.data.repository.BitcoinChartRepositoryImpl
 import com.biodun.core.utils.DurationUtil
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Flowable
 import io.reactivex.Single
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.TestScheduler
 import com.example.testshared.TestScheduler as LocalTestScheduler
 import org.junit.Before
 import org.junit.Test
@@ -26,7 +24,6 @@ class BitcoinChartRepositoryTest {
     private val response = DummyData.bitcoinData
     private val duration = DurationUtil.default
     private val throwable = Throwable()
-    private val testScheduler = TestScheduler()
 
     @Before
     fun setUp() {
@@ -36,7 +33,6 @@ class BitcoinChartRepositoryTest {
                 reactiveDb,
                 LocalTestScheduler()
             )
-        RxJavaPlugins.setComputationSchedulerHandler { testScheduler }
     }
 
     @Test
@@ -49,6 +45,7 @@ class BitcoinChartRepositoryTest {
         verify(bitcoinChartRemoteDataSource).getRemoteBitcoinData(duration)
         verify(reactiveDb).insertAllBitcoinData(response)
         test.assertValue(response)
+        test.dispose()
     }
 
     @Test
@@ -60,6 +57,7 @@ class BitcoinChartRepositoryTest {
 
         verify(bitcoinChartRemoteDataSource).getRemoteBitcoinData(duration)
         test.assertError(throwable)
+        test.dispose()
     }
 
     @Test
@@ -70,6 +68,7 @@ class BitcoinChartRepositoryTest {
 
         verify(reactiveDb).getAllBitcoinData()
         test.assertValue(response)
+        test.dispose()
     }
 
     @Test
@@ -81,5 +80,6 @@ class BitcoinChartRepositoryTest {
 
         verify(reactiveDb).getAllBitcoinData()
         test.assertError(throwable)
+        test.dispose()
     }
 }
