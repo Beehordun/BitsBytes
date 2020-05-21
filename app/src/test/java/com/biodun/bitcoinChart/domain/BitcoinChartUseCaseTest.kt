@@ -1,7 +1,8 @@
 package com.biodun.bitcoinChart.domain
 
 import com.biodun.bitcoinChart.DummyData
-import com.biodun.bitcoinChart.data.repository.BitcoinChartRepository
+import com.biodun.blockchainmarket.data.repository.BitcoinChartRepository
+import com.biodun.blockchainmarket.domain.BitcoinChartUseCase
 import com.biodun.core.utils.DurationUtil
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -41,6 +42,7 @@ class BitcoinChartUseCaseTest {
             Assert.assertNotNull(response)
             Assert.assertNotNull(response.values)
             Assert.assertEquals(response, bitcoinResponse)
+            dispose()
         }
     }
 
@@ -64,6 +66,7 @@ class BitcoinChartUseCaseTest {
             Assert.assertNotNull(response)
             Assert.assertNotNull(response.values)
             Assert.assertEquals(response, bitcoinResponse)
+            dispose()
         }
     }
 
@@ -81,6 +84,7 @@ class BitcoinChartUseCaseTest {
 
         test.run {
             assertError(throwable)
+            dispose()
         }
     }
 }
