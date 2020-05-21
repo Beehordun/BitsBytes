@@ -1,7 +1,7 @@
 # BitsBytes
 A multimodule Android app that fetches information about the current Bitcoin market price and then displays display the data in a graph.
 
-![BitsBytes](App Screenshot.png)
+![BitsBytes](AppScreenshot.png)
 
 ## Architecture
 The app uses the **Clean Code + MVVM** architectural pattern.
