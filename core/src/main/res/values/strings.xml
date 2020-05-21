@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sevenDays">7days</string>
+    <string name="thirtyDays">30days</string>
+    <string name="sixtyDays">60days</string>
+    <string name="oneHundredAndEightyDays">180days</string>
+</resources>
