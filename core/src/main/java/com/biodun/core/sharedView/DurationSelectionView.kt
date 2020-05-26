@@ -5,7 +5,10 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.biodun.core.R
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration.DEFAULT
+import com.biodun.core.utils.Duration.THIRTY_DAYS
+import com.biodun.core.utils.Duration.SIXTY_DAYS
+import com.biodun.core.utils.Duration.ONE_HUNDRED_AND_EIGHTY_DAYS
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.view_duration_selection.view.*
 
@@ -30,11 +33,11 @@ class DurationSelectionView @JvmOverloads constructor(
     }
 
     private fun configureView() {
-        sevenDaysTextView.setOnClickListener { handleDurationClicks(DurationUtil.default) }
-        thirtyDaysTextView.setOnClickListener { handleDurationClicks(DurationUtil.thirtyDays) }
-        sixtyDaysTextView.setOnClickListener { handleDurationClicks(DurationUtil.sixtyDays) }
+        sevenDaysTextView.setOnClickListener { handleDurationClicks(DEFAULT.time) }
+        thirtyDaysTextView.setOnClickListener { handleDurationClicks(THIRTY_DAYS.time) }
+        sixtyDaysTextView.setOnClickListener { handleDurationClicks(SIXTY_DAYS.time) }
         oneHundredAndEightyDaysTextView.setOnClickListener {
-            handleDurationClicks(DurationUtil.oneHundredAndEightyDays)
+            handleDurationClicks(ONE_HUNDRED_AND_EIGHTY_DAYS.time)
         }
     }
 
@@ -65,28 +68,28 @@ class DurationSelectionView @JvmOverloads constructor(
 
     private fun setSelectedState(duration: String) {
         when (duration) {
-            DurationUtil.default -> {
+            DEFAULT.time -> {
                 sevenDaysTextView.apply {
                     background = resources.getDrawable(R.drawable.rectangle_rounded_start_selected)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
 
-            DurationUtil.thirtyDays -> {
+            THIRTY_DAYS.time -> {
                 thirtyDaysTextView.apply {
                     background = resources.getDrawable(R.drawable.rectangle_selected)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
 
-            DurationUtil.sixtyDays -> {
+            SIXTY_DAYS.time -> {
                 sixtyDaysTextView.apply {
                     background = resources.getDrawable(R.drawable.rectangle_selected)
                     setTextColor(resources.getColor(R.color.white))
                 }
             }
 
-            DurationUtil.oneHundredAndEightyDays -> {
+            ONE_HUNDRED_AND_EIGHTY_DAYS.time -> {
                 oneHundredAndEightyDaysTextView.apply {
                     background = resources.getDrawable(R.drawable.rectangle_rounded_end_selected)
                     setTextColor(resources.getColor(R.color.white))

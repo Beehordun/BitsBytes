@@ -6,7 +6,7 @@ import com.biodun.blockchainmarket.data.model.BitcoinData
 import com.biodun.blockchainmarket.data.remote.BitcoinChartRemoteDataSource
 import com.biodun.blockchainmarket.data.repository.BitcoinChartRepository
 import com.biodun.blockchainmarket.data.repository.BitcoinChartRepositoryImpl
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration.DEFAULT
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -22,7 +22,7 @@ class BitcoinChartRepositoryTest {
     private val bitcoinChartRemoteDataSource: BitcoinChartRemoteDataSource = mock()
     private val reactiveDb: ReactiveDb<BitcoinData> = mock()
     private val response = DummyData.bitcoinData
-    private val duration = DurationUtil.default
+    private val duration = DEFAULT.time
     private val throwable = Throwable()
 
     @Before

@@ -4,7 +4,7 @@ import com.biodun.bitcoinChart.DummyData
 import com.biodun.blockchainmarket.data.remote.BitcoinChartRemoteDataSource
 import com.biodun.blockchainmarket.data.remote.retrofitRemoteImpl.BitcoinChartRemoteDataSourceImpl
 import com.biodun.blockchainmarket.data.remote.retrofitRemoteImpl.BitcoinChartService
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
@@ -30,7 +30,7 @@ class BitcoinChartRemoteDataSourceTest {
         whenever(bitcoinChartService.getBitcoinData(queryMap))
             .thenReturn(Single.just(dataResponse))
 
-        bitcoinChartRemoteDataSource.getRemoteBitcoinData(DurationUtil.default)
+        bitcoinChartRemoteDataSource.getRemoteBitcoinData(Duration.DEFAULT.time)
             .test()
             .run {
                 assertNoErrors()
@@ -46,7 +46,7 @@ class BitcoinChartRemoteDataSourceTest {
         whenever(bitcoinChartService.getBitcoinData(queryMap))
             .thenReturn(Single.error(throwable))
 
-        bitcoinChartRemoteDataSource.getRemoteBitcoinData(DurationUtil.default)
+        bitcoinChartRemoteDataSource.getRemoteBitcoinData(Duration.DEFAULT.time)
             .test()
             .run {
                 assertError(throwable)

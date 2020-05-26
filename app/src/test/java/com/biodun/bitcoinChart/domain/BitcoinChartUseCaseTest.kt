@@ -3,7 +3,7 @@ package com.biodun.bitcoinChart.domain
 import com.biodun.bitcoinChart.DummyData
 import com.biodun.blockchainmarket.data.repository.BitcoinChartRepository
 import com.biodun.blockchainmarket.domain.BitcoinChartUseCase
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration.DEFAULT
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -17,7 +17,7 @@ class BitcoinChartUseCaseTest {
 
     private lateinit var bitcoinChartUseCase: BitcoinChartUseCase
     private val repository: BitcoinChartRepository = mock()
-    private val duration = DurationUtil.default
+    private val duration = DEFAULT.time
     private val bitcoinResponse = DummyData.bitcoinData
 
     @Before

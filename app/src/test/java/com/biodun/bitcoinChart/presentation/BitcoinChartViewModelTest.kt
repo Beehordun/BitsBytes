@@ -7,7 +7,7 @@ import com.biodun.blockchainmarket.presentation.BitcoinChartViewModel
 import com.biodun.core.base.BaseReactiveUseCase
 import com.biodun.core.stateManagement.Result
 import com.biodun.core.stateManagement.ResultState
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration.DEFAULT
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
@@ -21,7 +21,7 @@ import com.example.testshared.TestScheduler as LocalTestScheduler
 
 class BitcoinChartViewModelTest {
     private lateinit var bitcoinChartViewModel: BitcoinChartViewModel
-    private val duration = DurationUtil.default
+    private val duration = DEFAULT.time
     private val bitcoinDataResponse = DummyData.bitcoinData
 
     private val bitcoinChartUseCase:

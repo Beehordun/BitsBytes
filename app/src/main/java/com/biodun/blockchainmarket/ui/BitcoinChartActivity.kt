@@ -14,7 +14,7 @@ import com.biodun.blockchainmarket.presentation.BitcoinChartViewModel
 import com.biodun.core.extentions.gone
 import com.biodun.core.extentions.visible
 import com.biodun.core.stateManagement.ResultState
-import com.biodun.core.utils.DurationUtil
+import com.biodun.core.utils.Duration.DEFAULT
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -50,7 +50,7 @@ class BitcoinChartActivity : AppCompatActivity() {
     }
 
     private fun configureView() {
-        bitcoinChartViewModel.getBitcoinData(DurationUtil.default)
+        bitcoinChartViewModel.getBitcoinData(DEFAULT.time)
         observeBitcoinChartLiveData()
         durationView.setOnDurationSelectedListener {
             bitcoinChartViewModel.getBitcoinData(it)
