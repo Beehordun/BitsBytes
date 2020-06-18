@@ -15,5 +15,8 @@ App uses the Room Database
 ## Static Analysis
 App uses ktlint and detekt 
 
+## Libraries
+RxJava, Dagger2, Room, LiveData, ViewModel, MPAndroidChart e.t.c
+
 ## Tests
 Unit tested the data, domain and presentation layers
