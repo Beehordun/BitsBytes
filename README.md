@@ -16,7 +16,7 @@ App uses the Room Database
 App uses ktlint and detekt 
 
 ## Libraries
-RxJava, Dagger2, Room, LiveData, ViewModel, MPAndroidChart e.t.c
+RxJava, Dagger2, Room, LiveData, ViewModel, MPAndroidChart, Junit and Mockito e.t.c
 
 ## Tests
 Unit tested the data, domain and presentation layers
