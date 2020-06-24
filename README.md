@@ -4,7 +4,7 @@ A multi-module Android app that fetches the Bitcoin market prices and then displ
 ![BitsBytes](AppScreenshot.png)
 
 ## Architecture
-The app uses the **Clean Code + MVVM** architectural pattern.
+The app uses the **Clean Architeture + MVVM** architectural pattern.
 
 ## Dependency Injection
 Dependency Injection is managed using Dagger2
