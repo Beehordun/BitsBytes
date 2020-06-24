@@ -1,5 +1,5 @@
 # BitsBytes
-A multi-module Android app that fetches the Bitcoin market prices and then displays display the data in a graph.
+A multi-module Android app that fetches the Bitcoin market prices and then displays the data in a graph.
 
 ![BitsBytes](AppScreenshot.png)
 
